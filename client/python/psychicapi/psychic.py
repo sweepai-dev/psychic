@@ -133,7 +133,7 @@ class Psychic:
             raise Exception("Unauthorized: Invalid or missing secret key")
         try:
             data = response.json()
-            message = data.get("detail", "No additional information")
+            message = 'Server error: ' + data.get("detail", "No additional information")
         except requests.exceptions.JSONDecodeError:
             message = "No additional information"
         raise Exception(f"HTTP error {response.status_code}: {message}")
@@ -258,41 +258,6 @@ class Psychic:
                 sections=[Section(**section) for section in filter["sections"]],
             )
             return filter
-        else:
-            self.handle_http_error(response)
-
-    def get_conversations(
-        self,
-        *,
-        account_id: str,
-        connector_id: ConnectorId,
-        page_cursor: Optional[str] = None,
-        oldest_timestamp: Optional[int] = None,
-    ):
-        body = {
-            "connector_id": connector_id.value,
-            "account_id": account_id,
-            "page_cursor": page_cursor,
-        }
-        if oldest_timestamp is not None:
-            body["oldest_timestamp"] = oldest_timestamp
-
-        response = requests.post(
-            self.api_url + "get-conversations",
-            json=body,
-            headers={
-                "Authorization": "Bearer " + self.secret_key,
-                "Accept": "application/json",
-            },
-        )
-        if response.status_code == 200:
-            data = response.json()
-            messages = data["messages"]
-            next_page_cursor = data["next_page_cursor"]
-            return GetConversationsResponse(
-                messages=messages, next_page_cursor=next_page_cursor
-            )
-
         else:
             self.handle_http_error(response)
 
