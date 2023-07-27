@@ -113,7 +113,7 @@ async def enable_connector(
         logger.log_api_call(
             config, Event.set_custom_connector_credentials, request, None, e
         )
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -133,7 +133,7 @@ async def get_connector_status(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.get_connector_status, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.get(
@@ -151,7 +151,7 @@ async def get_link_settings(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.get_link_settings, None, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -179,7 +179,7 @@ async def get_connections(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.get_connections, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -207,7 +207,7 @@ async def delete_connections(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.delete_connection, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -251,7 +251,7 @@ async def add_section_filter(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.add_section_filter, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -299,7 +299,7 @@ async def add_section_filter_public(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.add_section_filter, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -329,7 +329,7 @@ async def add_apikey_connection(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.add_apikey_connection, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -357,7 +357,7 @@ async def add_oauth_connection(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.add_oauth_connection, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -386,7 +386,7 @@ async def update_connection_metadata(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.update_connection_metadata, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
@@ -455,7 +455,7 @@ async def get_documents(
     except Exception as e:
         print(e)
         logger.log_api_call(config, Event.get_documents, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail='Server error: ' + str(e))
 
 
 @app.post(
