@@ -133,7 +133,7 @@ class Psychic:
             raise Exception("Unauthorized: Invalid or missing secret key")
         try:
             data = response.json()
-            message = 'Server error: ' + data.get("detail", "No additional information")
+            message = data.get("detail", "No additional information")
         except requests.exceptions.JSONDecodeError:
             message = "No additional information"
         raise Exception(f"HTTP error {response.status_code}: {message}")
