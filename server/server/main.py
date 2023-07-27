@@ -105,15 +105,15 @@ async def enable_connector(
             StateStore().update_connector_custom_config(connector_id, config, custom_config)
         response = ConnectorStatusResponse(status=status)
         logger.log_api_call(
-            config, Event.set_custom_connector_credentials, request, response, None
+            config, Event.get_documents, request, None, e
         )
-        return response
+        raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         print(e)
         logger.log_api_call(
-            config, Event.get_documents, request, None, e
-        logger.log_api_call(config, Event.get_tickets, request, None, e)
-        raise custom_exception_handler(e)
+            config, Event.set_custom_connector_credentials, request, None, e
+        )
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post(
