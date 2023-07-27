@@ -113,7 +113,7 @@ async def enable_connector(
         logger.log_api_call(
             config, Event.set_custom_connector_credentials, request, None, e
         )
-        raise HTTPException(status_code=500, detail=str(e))
+        raise custom_exception_handler(e)
 
 
 @app.post(
@@ -454,10 +454,10 @@ async def get_documents(
         return response
     except Exception as e:
         print(e)
-        logger.log_api_call(config, Event.get_documents, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
-
-
+        logger.log_api_call(
+            config, Event.set_custom_connector_credentials, request, None, e
+        )
+        raise custom_exception_handler(e)
 @app.post(
     "/get-tickets",
     response_model=GetTicketsResponse,
@@ -504,8 +504,8 @@ async def get_tickets(
         return response
     except Exception as e:
         print(e)
-        logger.log_api_call(config, Event.get_tickets, request, None, e)
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.log_api_call(config, Event.get_connector_status, request, None, e)
+        raise custom_exception_handler(e)
 
 
 @app.post(
