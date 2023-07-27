@@ -50,10 +50,7 @@ If you have any questions on how to get started, [come join our Slack community!
 * 🚧 Support for write scopes for each connector, in addition to read scopes
 
 ## Getting Started - 15 min
-Check out the [quickstart tutorial](https://docs.psychic.dev/quickstart) to get started. The tutorial will guide you through the process of setting up Psychic, connecting to a data source, and retrieving data.
-
-## Installation
-To install Psychic, you will need to clone the repository and install the necessary dependencies. More detailed instructions can be found in the [quickstart tutorial](https://docs.psychic.dev/quickstart).
+Check out the [quickstart tutorial](https://docs.psychic.dev/quickstart) to get started.
 
 ## Contributing
 See [CONTRIBUTING.md](https://github.com/psychicapi/psychic/blob/main/CONTRIBUTING.md)
