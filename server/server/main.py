@@ -111,8 +111,8 @@ async def enable_connector(
     except Exception as e:
         print(e)
         logger.log_api_call(
-            config, Event.set_custom_connector_credentials, request, None, e
-        )
+            config, Event.get_documents, request, None, e
+        logger.log_api_call(config, Event.get_tickets, request, None, e)
         raise custom_exception_handler(e)
 
 
@@ -455,7 +455,7 @@ async def get_documents(
     except Exception as e:
         print(e)
         logger.log_api_call(
-            config, Event.set_custom_connector_credentials, request, None, e
+            config, Event.get_documents, request, None, e
         )
         raise custom_exception_handler(e)
 @app.post(
@@ -504,7 +504,7 @@ async def get_tickets(
         return response
     except Exception as e:
         print(e)
-        logger.log_api_call(config, Event.get_connector_status, request, None, e)
+        logger.log_api_call(config, Event.get_tickets, request, None, e)
         raise custom_exception_handler(e)
 
 
